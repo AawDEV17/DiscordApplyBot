@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import re
-TOKEN = "MTM1NzczODQ4MDcxMjgxNDU5Mg.GS4V-r.zaZ5bwUMTFjXbMJxompE_QfffB4RfWJqXUm3Tk" 
+TOKEN = "fuck off" 
 
 CURATOR_ROLE_ID = 1357739823896461472
 YOUR_GUILD_ID = 1349333696754487296
