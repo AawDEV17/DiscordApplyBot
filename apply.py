@@ -1,7 +1,8 @@
 import discord
 from discord.ext import commands
+from discord.ui import View, Button
 import re
-TOKEN = "fuck off" 
+TOKEN = "fuckss" 
 
 CURATOR_ROLE_ID = 1357739823896461472
 YOUR_GUILD_ID = 1349333696754487296
@@ -165,25 +166,29 @@ class ApplyButton(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
 
-    @discord.ui.button(label="📩 Подать заявку", style=discord.ButtonStyle.primary)
+    @discord.ui.button(label="📩 Подать заявку", style=discord.ButtonStyle.gray)
     async def apply(self, interaction: discord.Interaction, _):
         await interaction.response.send_modal(ApplicationModal())
 
+# Команда для отправки заявки
 @bot.command()
 async def send_application(ctx):
     embed = discord.Embed(
-        title="📋 Подай заявку на модератора!",
-        description=(
+        title="📋Подача заявки на должность Модератор",
+        description=( 
             "🔹 **Требования:**\n"
-            "1️⃣ От 14 лет\n"
-            "2️⃣ Опыт модерации\n"
-            "3️⃣ Активность от 3 часов в день\n"
-            "4️⃣ Знание правил\n"
-            "5️⃣ Грамотная речь\n\n"
-            "Нажмите кнопку ниже, чтобы подать заявку!"
+            "1️⃣  От 14 лет\n"
+            "2️⃣  Опыт модерации\n"
+            "3️⃣  Активность от 3 часов в день\n"
+            "4️⃣  Знание правил сервера\n"
+            "5️⃣  Грамотная речь\n\n"
+            "Нажмите кнопку ниже, чтобы подать заявку."
         ),
         color=discord.Color.green()
     )
-    await ctx.send(embed=embed, view=ApplyButton())
+
+    embed.set_image(url="https://sdmntprwestus.oaiusercontent.com/files/00000000-215c-5230-aa5c-85a85b4796a3/raw?se=2025-04-06T06%3A51%3A34Z&sp=r&sv=2024-08-04&sr=b&scid=8c74c4df-f537-5d7b-a9e7-111b99d76d4a&skoid=e4438ed3-2a6f-4fd3-bf63-222012dc627c&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-04-06T04%3A45%3A30Z&ske=2025-04-07T04%3A45%3A30Z&sks=b&skv=2024-08-04&sig=k1zjcDfWI6vv6zt2ZGArPwCb8qOzGIPriTF%2BAcpLUFY%3D")
+    view = ApplyButton()
+    view.message = await ctx.send(embed=embed, view=view)
 
 bot.run(TOKEN)
